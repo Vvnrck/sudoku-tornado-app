@@ -1,0 +1,222 @@
+@font-face {
+    font-family: 'Roboto Thin';
+    src: url(/static/fonts/Roboto-Thin.ttf);
+}
+
+@font-face {
+    font-family: 'Roboto Regular';
+    src: url(/static/fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Roboto Medium';
+    src: url(/static/fonts/Roboto-Medium.ttf);
+}
+
+html {
+    height: 100%;
+    font-family: 'Roboto Thin', Arial, sans-serif !important;
+}
+
+body {
+    height: 100%;
+}
+
+#layout {
+    height: 100%;
+    background-color: #F9F9F9;
+}
+
+
+/* --------- SUDOKU --------- */
+.sudoku-banner {
+    font-size: 82px;
+    font-family: 'Roboto Thin', Arial, sans-serif;
+    margin: 40px;
+    text-align: center;
+}
+
+#sudoku {
+    border-spacing: 7px;
+    border-collapse: separate;
+    margin: auto;
+}
+
+
+.sudoku-cell {
+    height: 50px;
+    width: 50px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.26);
+
+    text-align: center;
+    font-family: 'Roboto Thin', Arial, sans-serif;
+    font-size: 32px;
+}
+.sudoku-cell[data-no-erase="1"] {
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    cursor: default;
+}
+.sudoku-cell[data-no-erase="0"] {
+    font-family: 'Roboto Thin', Arial, sans-serif;
+    cursor: pointer;
+}
+
+
+.sudoku-cell:not(.light-background) {
+    background-color: #FFF;
+}
+
+.sudoku-cell[data-no-erase="0"]:hover,
+.sudoku-controls-on:hover {
+    background-color: #b2dfdb !important;
+}
+
+.light-background {
+    background-color: #e0f2f1;
+}
+
+.sudoku-cell.selected,
+.sudoku-cell.selected.selected-by-others{
+    background-color: #ffe57f !important;
+}
+
+.sudoku-cell.selected-by-others {
+    background-color: rgba(255, 229, 127, 0.42) !important;
+}
+
+.sudoku-controls-button {
+    float: left;
+    font-size: 42px;
+    width: 50px;
+    height: 50px;
+    color: #acacac;
+    margin: 4px;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Roboto Thin', Arial, sans-serif;
+}
+
+.sudoku-controls-button.sudoku-controls-on {
+    color: black;
+    background-color: white;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.16);
+    cursor: pointer;
+}
+
+.sudoku-controls-button:first-child {
+    margin-left: 5px;
+}
+
+.sudoku-controls {
+    margin: auto;
+    width: 582px;
+    height: 70px;
+    background-color: #E7E7E7;
+    margin-top: 30px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.26);
+}
+
+
+.online-counter {
+    z-index: 9998;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 32px;
+    font-family: 'Roboto Thin', Arial, sans-serif;
+    padding: 4px;
+    padding-right: 10px;
+}
+.online-counter:after {
+    content: ' online';
+}
+
+.go-to-idle-a {
+    font-size: 14px;
+    font-family: 'Roboto Medium', Arial, sans-serif !important;
+
+    text-decoration: none;
+}
+.go-to-idle-a:hover {
+    text-decoration: underline;
+}
+.go-to-idle {
+    padding: 10px;
+    float: left;
+    padding-left: 15px;
+}
+
+#next-sudoku {
+    width: 285px;
+    position: absolute;
+    background: none repeat scroll 0% 0% #009688;
+    padding: 11px;
+    color: white;
+    font-family: 'Roboto Medium', Arial, sans-serif !important;
+    z-index: 9999;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.26);
+    left: -320px;
+}
+#next-sudoku a {
+    color: white;
+}
+
+/* --------- MENU --------- */
+#sudoku-games-list {
+    width: 300px;
+    margin: auto;
+}
+
+.sudoku-games-list-element {
+    color: white;
+    background-color: #00897b;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.26);
+    width: 100%;
+    height: 50px;
+}
+
+.sudoku-games-list-element:hover {
+    background-color: #009688;
+}
+
+.sudoku-games-list-element-name,
+.sudoku-games-list-element-online {
+    font-family: 'Roboto Regular', Arial, sans-serif;
+}
+
+.sudoku-games-list-element-name {
+    padding-left: 20px;
+    float: left;
+    font-size: 18px;
+    margin: 13px 0;
+}
+
+.sudoku-games-list-element-online {
+    padding-right: 20px;
+    float: right;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.sudoku-games-list-join {
+    font-family: 'Roboto Thin', Arial, sans-serif;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+#start-sudoku {
+    color: white;
+    background-color: #00897b;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.26);
+    font-family: 'Roboto Thin', Arial, sans-serif;
+    font-size: 32px;
+    margin: auto;
+    text-decoration: none;
+}
+
+#start-sudoku:hover {
+    background-color: #009688;
+}

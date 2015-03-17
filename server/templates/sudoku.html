@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Sudoku {{ sudoku.sudoku_name }}{% end %}
+
+
+{% block main %}
+
+    <div class="pure-g" id="layout" data-sudoku-name="{{ sudoku.sudoku_name }}">
+        <!--<div class="pure-u-1 pure-u-md-1-5"></div>-->
+        <div class="pure-u-1">
+            <div class="online-counter" style="">0</div>
+            <a href="/" class="go-to-idle-a"><div class="go-to-idle">TO IDLE</div></a>
+
+            <div id="next-sudoku"><a href="/{{sudoku.next_sudoku}}" class="next-sudoku">
+                    This was a triumph. HUGE SUCCESS. <br>
+                    Still, there's another sudoku to be done.
+            </a></div>
+
+            <p class="sudoku-banner">Sudoku.</p>
+            
+
+            <div id="sudoku-view">
+
+            </div>
+
+        </div>
+    </div>
+{% end %}
+
+{% block scripts %}
+    <script type="text/javascript" src="/static/app.js"></script>
+
+    <script type="text/template" id="sudoku-template">
+        <table id="sudoku">
+            {% for i in range(9) %}
+            <tr>
+                {% for j in range(9) %}
+                    <td class="sudoku-cell
+                        {% if i in (0, 1, 2, 6, 7, 8) and j in (0, 1, 2, 6, 7, 8) \
+                           or i in (3, 4, 5) and j in (3, 4, 5) %}
+                        light-background
+                        {% end %}
+                        "
+                        data-cell-row="{{i+1}}"
+                        data-cell-col="{{j+1}}"
+                        data-cell-candidates=""
+                        data-clients="[]"
+                        ></td>
+                {% end %}
+            </tr>
+            {% end %}
+        </table>
+
+        <div class="sudoku-controls" style="opacity: 0">
+            {% for i in range(9) %}
+                <div class="sudoku-controls-button sudoku-controls-on" data-value="{{i+1}}">{{i+1}}</div>
+            {% end %}
+                <div class="sudoku-controls-button cell-erase" data-value="0">x</div>
+        </div>
+    </script>
+{% end %}

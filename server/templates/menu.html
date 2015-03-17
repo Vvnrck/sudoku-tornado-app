@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Sudoku.{% end %}
+
+{% block main %}
+        <div class="pure-g" id="layout">
+            <div class="pure-u-1">
+                <p class="sudoku-banner">Sudoku.</p>
+
+                <div style="text-align: center">
+                    <a id="start-sudoku" href="/{{random_string}}">
+                        Start <i class="fa fa-pencil"></i>
+                    </a>
+                </div>
+
+
+                <div id="sudoku-games-list">
+                {% if len(games) %}
+                <p class="sudoku-games-list-join">Or join someone:</p>
+                {% end %}
+                {% for name, online in games %}
+                    <a href="/{{name}}">
+                        <div class="sudoku-games-list-element">
+                            <p class="sudoku-games-list-element-name">{{name}}</p>
+                            <p class="sudoku-games-list-element-online">
+                                <i class="fa fa-user"></i> {{online}}
+                            </p>
+                        </div>
+                    </a>
+                    <div style="height: 5px"></div>
+                {% end %}
+                </div>
+            </div>
+        </div>
+{% end %}
