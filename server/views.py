@@ -38,6 +38,7 @@ class MainHandler(Handler):
 
     def get_context_data(self, *args, **kwargs):
         return {
+            'url': settings.URL
             'games': server.api.list_active_games(),
             'random_string': utils.get_random_string(settings.SUDOKU_NAME_LEN)
         }
@@ -64,6 +65,7 @@ class SudokuHandler(Handler):
             sudoku_field[i // 9][i % 9] = cell['val']
         context = {
             'sudoku': self.fetch_sudoku(sudoku_name),
-            'sudoku_field': sudoku_field
+            'sudoku_field': sudoku_field,
+            'url': settings.URL
         }
         return context
