@@ -28,5 +28,5 @@ def make_settings():
 
 if __name__ == "__main__":
     application = make_app()
-    application.listen(8888)
+    application.listen(settings.SERVER_PORT)
     tornado.ioloop.IOLoop.instance().start()
