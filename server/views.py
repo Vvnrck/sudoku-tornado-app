@@ -38,7 +38,7 @@ class MainHandler(Handler):
 
     def get_context_data(self, *args, **kwargs):
         return {
-            'url': settings.URL
+            'url': settings.URL,
             'games': server.api.list_active_games(),
             'random_string': utils.get_random_string(settings.SUDOKU_NAME_LEN)
         }
