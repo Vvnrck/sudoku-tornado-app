@@ -95,7 +95,7 @@ $(function(){
             this.sudoku_name = this.attributes.sudoku_name
             this.sudoku_field = JSON.parse(this.attributes.field)
             if (!wsready) {
-                ws = new WebSocket('ws://localhost:8888/ws')
+                ws = new WebSocket('wss://localhost:8888/ws')
                 ws.onopen = function () {
                     ws.send('init ' + self.sudoku_name)
                     wsready = true
