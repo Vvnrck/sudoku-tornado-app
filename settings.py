@@ -2,7 +2,7 @@ import os
 import sys
 
 DEBUG = True
-ENVIRONMENT = 'heroku'
+ENVIRONMENT = 'heroku' if os.environ.get('DATABASE_URL') is not None else 'local'
 
 BASE_DIR = os.path.dirname(__file__)
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'server/templates')

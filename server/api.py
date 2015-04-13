@@ -37,7 +37,7 @@ class SudokuHandler(tornado.web.RequestHandler):
 
     @staticmethod
     def _fetch_sudoku(sudoku_name):
-        session = db.open_db_session()
+        session = db.open_db_session(expire_on_commit=False)
         sudoku = session.query(db.Sudoku).filter(db.Sudoku.sudoku_name == sudoku_name)
         sudoku = sudoku.first() or db.Sudoku.new(30, save_to_db=False, session=session)
         sudoku.sudoku_name = sudoku_name
