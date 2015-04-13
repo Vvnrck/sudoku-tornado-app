@@ -49,12 +49,13 @@ class SudokuHandler(Handler):
 
     @staticmethod
     def fetch_sudoku(sudoku_id) -> db.Sudoku:
-        session = db.open_db_session()
+        session = db.open_db_session(expire_on_commit=False)
         sudoku = session.query(db.Sudoku).filter(db.Sudoku.sudoku_name == sudoku_id)
         sudoku = sudoku.first() or db.Sudoku.new(
             settings.SUDOKU_GRID_NUMBERS, save_to_db=False, session=session)
         sudoku.sudoku_name = sudoku_id
         db.Sudoku.save(sudoku, session)
+        session.close()
         return sudoku
 
     def get_context_data(self, *args, **kwargs):

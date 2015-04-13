@@ -14,7 +14,10 @@ import utils
 
 Base = declarative_base()
 engine = create_engine(settings.SQLALCHEMY_DATABASE_URI, pool_size=20)
-open_db_session = sessionmaker(bind=engine)
+
+
+def open_db_session(expire_on_commit=True):
+    return sessionmaker(bind=engine, expire_on_commit=expire_on_commit)()
 
 
 class Sudoku(Base):
