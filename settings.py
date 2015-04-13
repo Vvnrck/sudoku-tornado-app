@@ -9,7 +9,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'server/templates')
 STATIC_URL = os.path.join(BASE_DIR, 'static')
 
 SUDOKU_NAME_LEN = 5
-SUDOKU_GRID_NUMBERS = 70
+SUDOKU_GRID_NUMBERS = int(os.environ.get('SUDOKU_GRID_NUMBERS', 35))
 
 if ENVIRONMENT == 'heroku':
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
