@@ -42,6 +42,7 @@ class SudokuHandler(tornado.web.RequestHandler):
         sudoku = sudoku.first() or db.Sudoku.new(30, save_to_db=False, session=session)
         sudoku.sudoku_name = sudoku_name
         db.Sudoku.save(sudoku, session)
+        session.close()
         return sudoku
 
 
