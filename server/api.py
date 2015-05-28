@@ -74,7 +74,7 @@ class SocketHandler(tornado.websocket.WebSocketHandler, SudokuSocket):
         self.client_name = name
         self.write_message('clientname {}'.format(name))
 
-    # @tornado.gen.coroutine
+    @tornado.gen.coroutine
     def on_message(self, message):
         if message.startswith('init'):
             self._init_socket(message)
@@ -89,6 +89,8 @@ class SocketHandler(tornado.websocket.WebSocketHandler, SudokuSocket):
             sudoku_field, next_name = self._update_sudoku_in_database(tokens)
             self.send_message_to_others(tokens[1], message)
             self.send_win_signal(sudoku_field, next_name)
+        elif message.startswith('ping') and settings.DEBUG:
+            print('Ping from {}'.format(self.client_name))
 
     def _init_socket(self, message):
         tokens = message.split()

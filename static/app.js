@@ -100,13 +100,16 @@ $(function(){
                 ws.onopen = function () {
                     ws.send('init ' + self.sudoku_name)
                     wsready = true
+                    setInterval(function () { ws.send('ping') }, 10000)
                 }
                 ws.onmessage = function (event) {
-                    // TODO: Move to view.
                     console.log(event.data)
-
                     var tokens = event.data.split(' ')
                     $(document).trigger('updateView', [tokens])
+                }
+                ws.onerror = function (e) {
+                    console.log(e)
+                    alert('An error occurred :(\nPlease reload the page.')
                 }
             }
 

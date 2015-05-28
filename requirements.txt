@@ -1,4 +1,4 @@
-SQLAlchemy==0.9.8
-certifi==14.05.14
+SQLAlchemy==1.0.4
+certifi==2015.04.28
 psycopg2==2.5.4
-tornado==4.1
+tornado==4.2
