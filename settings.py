@@ -14,7 +14,7 @@ SUDOKU_GRID_NUMBERS = int(os.environ.get('SUDOKU_GRID_NUMBERS', 35))
 if ENVIRONMENT == 'heroku':
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     SERVER_PORT = os.environ['PORT']
-    URL = 'sudoku-everyday.herokuapp.com'
+    URL = 'trviad-sudoku.herokuapp.com'
 elif ENVIRONMENT == 'local':
     SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:123456@localhost:5432/sudoku_tornado'
     SERVER_PORT = 8888
